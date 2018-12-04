@@ -9,16 +9,16 @@ def createSSHClient(server, port, user, password):
     client.connect(server, port, user, password)
     return client
     
-server = "tty.sdf.org"
+server = "SERVER_ADDRESS"
 port = 22
-user = "cao"
-password = "1m392boL0d76rA"
+user = "USERNAME"
+password = "PASSWORD"
 
 ssh = createSSHClient(server, port, user, password)
 # SCPCLient takes a paramiko transport as an argument
 scp = SCPClient(ssh.get_transport())
 
-# :/sdf/udd/c/cao/basket
+# :location
 scp.put('logs.txt', 'remote_logs.txt')
 scp.get('remote_logs.txt')
 scp.close()
